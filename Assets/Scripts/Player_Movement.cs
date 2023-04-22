@@ -21,7 +21,9 @@ public class Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (controller.isGrounded) {
+            
             moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
 
@@ -37,6 +39,7 @@ public class Player_Movement : MonoBehaviour
                 sprite.flipX = false;
             }
         }
+
 
         moveDirection.y -= gravity * Time.deltaTime;
 
