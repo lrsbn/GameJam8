@@ -6,8 +6,9 @@ public class Player_Movement : MonoBehaviour
 {
 
     public float speed = 6f;
-    public float jumpSpeed = 8f;
+    public float jumpSpeed = 15f;
     public float gravity = 20f;
+    public float crouchSpeed = 10f;
     private Vector2 moveDirection = Vector2.zero;
 
     private CharacterController controller;
@@ -22,25 +23,20 @@ public class Player_Movement : MonoBehaviour
     void Update()
     {
 
+        float horizontal = Input.GetAxis("Horizontal");
+        moveDirection.x = horizontal * speed;
+        moveDirection = transform.TransformDirection(moveDirection);
+
         if (controller.isGrounded) {
-            
-            moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-
-            moveDirection *= speed;
-
             if (Input.GetButton("Jump")) {
                 moveDirection.y = jumpSpeed;
             }
-
-            if (moveDirection.x < 0) {
-                sprite.flipX = true;
-            } else if (moveDirection.x > 0) {
-                sprite.flipX = false;
-            }
         }
-
-
+        if (moveDirection.x < 0) {
+            sprite.flipX = true;
+        } else if (moveDirection.x > 0) {
+            sprite.flipX = false;
+        }
         moveDirection.y -= gravity * Time.deltaTime;
 
         controller.Move(moveDirection * Time.deltaTime);
