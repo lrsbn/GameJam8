@@ -6,11 +6,12 @@ public class Camera_Movement : MonoBehaviour
 {
 
     public float cameraDistance = -10f;
+    public float heightDif = -1f;
 
     private float startHeight;
 
     void Start() {
-        startHeight = transform.parent.position.y -0.5f;
+        startHeight = transform.parent.position.y + heightDif;
     }
 
     // Update is called once per frame
