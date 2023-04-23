@@ -45,7 +45,6 @@ public class Player_Movement : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
 
         // Walk-Animation
-        Debug.Log(moveDirection);
         if(moveDirection == Vector2.zero || !controller.isGrounded) {
             animator.SetFloat("Speed", 0);
 		} else { 

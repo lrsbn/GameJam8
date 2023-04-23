@@ -18,6 +18,5 @@ public class Camera_Movement : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(transform.parent.position.x, startHeight + transform.parent.position.y * 0.05f, cameraDistance);
-        Debug.Log("Cam: " + transform.position + "; Player: " + transform.parent.position);
     }
 }
